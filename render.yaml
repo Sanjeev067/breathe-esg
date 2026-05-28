@@ -1,0 +1,11 @@
+services:
+  - type: web_service
+    name: breathe-esg-backend
+    env: python
+    repo: https://github.com/Sanjeev067/breathe-esg.git
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn backend.wsgi:application
+    envVars:
+      DJANGO_SETTINGS_MODULE: backend.settings
+    healthCheckPath: /health
